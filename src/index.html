@@ -7,19 +7,44 @@
 window.onload = function(){
     console.log("Hello") 
 
-    var h = 500
+    var h = 250
         w = 500
 
     var svg = d3.select("body").selectAll("svg"); 
     
     svg.attr("height", h)
         .attr("width", w) 
+        .style("background-color", "steelblue") 
     
     var cr = 5,
-        startx = 50,
-        starty = 50;
+        startx = 65,
+        starty = 65;
 
+    var tilesize = 30;
 
+    var tiles = [
+                {x: 50, y:50},    
+                {x: 50, y:80},
+                {x: 50, y:110}, 
+                {x: 80, y:110},    
+                {x: 110, y:110}, 
+                {x: 110, y:140},  
+                ]
+
+    var tiles = svg.selectAll("rect")
+                .data(tiles)
+                .enter()
+                .append("rect")
+                .attr("height", tilesize)
+                .attr("width", tilesize)
+                .attr("x", function(d){
+                        return d.x;
+                })
+                .attr("y", function(d){
+                        return d.y;
+                })
+                .style("fill", "black") 
+                
     var player = [{size: 5, x: startx, y: starty, oldx: 0, oldy: 0}]
     
     var c = svg.selectAll("circle")
@@ -31,36 +56,40 @@ window.onload = function(){
                      })
                 .attr("cx", startx)
                 .attr("cy", starty)
+                .style("fill", "red") 
 
-    var movepx = 10
-
+    var movepx = tilesize
+    
     document.onkeydown = function(e) {
         switch (e.keyCode) {
             case 37:
-                console.log(c) 
-                c.attr("cx", function(d) {
+                c.transition()
+                  .attr("cx", function(d) {
                         d.oldx = d.x
                         d.x = d.oldx - movepx;
-                        return d.x
-                }); 
+                        return d.x;
+                })
 
                 break;
             case 38:
-                c.attr("cy", function(d) {
+                c.transition()
+                .attr("cy", function(d) {
                         d.oldy = d.y
                         d.y = d.oldy - movepx;
                         return d.y
                 }); 
                 break;
             case 39:
-                c.attr("cx", function(d) {
+                c.transition()
+                 .attr("cx", function(d) {
                         d.oldx = d.x
                         d.x = d.oldx + movepx;
                         return d.x
                 }); 
                 break;
             case 40:
-                c.attr("cy", function(d) {
+                c.transition()
+                 .attr("cy", function(d) {
                         d.oldy = d.y
                         d.y = d.oldy + movepx;
                         return d.y
@@ -80,7 +109,7 @@ window.onload = function(){
 </head> 
 <body>
 
-<h1> Code man </h1> 
+<h1>bio-8010</h1> 
 
 <svg id="world">
 
