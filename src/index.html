@@ -12,21 +12,62 @@ window.onload = function(){
 
     var svg = d3.select("body").selectAll("svg"); 
     
-
     svg.attr("height", h)
         .attr("width", w) 
-
+    
     var cr = 5,
         startx = 50,
         starty = 50;
 
+
+    var player = [{size: 5, x: startx, y: starty, oldx: 0, oldy: 0}]
+    
     var c = svg.selectAll("circle")
-                .data([5])
+                .data(player)
                 .enter()
                 .append("circle") 
-                .attr("r", cr)
+                .attr("r", function(d){
+                     return d.size
+                     })
                 .attr("cx", startx)
                 .attr("cy", starty)
+
+    var movepx = 10
+
+    document.onkeydown = function(e) {
+        switch (e.keyCode) {
+            case 37:
+                console.log(c) 
+                c.attr("cx", function(d) {
+                        d.oldx = d.x
+                        d.x = d.oldx - movepx;
+                        return d.x
+                }); 
+
+                break;
+            case 38:
+                c.attr("cy", function(d) {
+                        d.oldy = d.y
+                        d.y = d.oldy - movepx;
+                        return d.y
+                }); 
+                break;
+            case 39:
+                c.attr("cx", function(d) {
+                        d.oldx = d.x
+                        d.x = d.oldx + movepx;
+                        return d.x
+                }); 
+                break;
+            case 40:
+                c.attr("cy", function(d) {
+                        d.oldy = d.y
+                        d.y = d.oldy + movepx;
+                        return d.y
+                });
+                break;
+        }
+    };                
 
 
 }
