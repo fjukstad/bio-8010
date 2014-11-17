@@ -14,7 +14,7 @@ window.onload = function(){
     
     svg.attr("height", h)
         .attr("width", w) 
-        .style("background-color", "steelblue") 
+        .style("background-color", "#B00000") 
     
     var cr = 5,
         startx = 65,
@@ -56,46 +56,102 @@ window.onload = function(){
                      })
                 .attr("cx", startx)
                 .attr("cy", starty)
-                .style("fill", "red") 
+                .style("fill", "steelblue") 
+
+    var star = [{x: 115, y:155}] 
 
     var movepx = tilesize
+
+    function moveLeft() {
+        c.transition()
+          .attr("cx", function(d) {
+                d.oldx = d.x
+                d.x = d.oldx - movepx;
+                return d.x;
+        })
+    }
+    function moveUp() {
+        c.transition()
+        .attr("cy", function(d) {
+                d.oldy = d.y
+                d.y = d.oldy - movepx;
+                return d.y
+        }); 
+    }
+
+    function moveRight() {
+        c.transition()
+         .attr("cx", function(d) {
+                d.oldx = d.x
+                d.x = d.oldx + movepx;
+                return d.x
+        }); 
+    }
+    function moveDown() {
+    c.transition()
+        .attr("cy", function(d) {
+            d.oldy = d.y
+            d.y = d.oldy + movepx;
+            return d.y
+    });
+    }
+
+    function outsideBoundaries(){
+        var d = c[0][0].__data__
+        console.log(d) 
+        var len =tiles[0].length;
+        for(var i = 0; i < len; i++){
+            if(inside(tiles[0][i].__data__, d.x, d.y)){
+                return false
+            } 
+
+        } 
+        return true
+    }
+
+    function inside(tile, x, y){
+        if(x <= tile.x){ //left
+            return false;
+        } else if(x >= tile.x+tilesize){ //right
+            return false;
+        } else if(y > tile.y + tilesize){ // bottom
+            return false;
+        } else if(y < tile.y){ //top
+            return false;
+        }
+        return true
+    }
     
     document.onkeydown = function(e) {
         switch (e.keyCode) {
             case 37:
-                c.transition()
-                  .attr("cx", function(d) {
-                        d.oldx = d.x
-                        d.x = d.oldx - movepx;
-                        return d.x;
-                })
-
+                moveLeft() 
                 break;
             case 38:
-                c.transition()
-                .attr("cy", function(d) {
-                        d.oldy = d.y
-                        d.y = d.oldy - movepx;
-                        return d.y
-                }); 
+                moveUp() 
                 break;
             case 39:
-                c.transition()
-                 .attr("cx", function(d) {
-                        d.oldx = d.x
-                        d.x = d.oldx + movepx;
-                        return d.x
-                }); 
+                moveRight()
                 break;
             case 40:
-                c.transition()
-                 .attr("cy", function(d) {
-                        d.oldy = d.y
-                        d.y = d.oldy + movepx;
-                        return d.y
-                });
+                moveDown() 
                 break;
         }
+        if(outsideBoundaries()){
+            console.log("character outside");
+            c.transition()
+                .attr("cy", function(d) {
+                    d.oldy = d.y
+                    d.y = starty
+                    return d.y
+                })
+                 .attr("cx", function(d) {
+                    d.oldx = d.x
+                    d.x = startx; 
+                    return d.x
+                }); 
+        }
+
     };                
 
 
