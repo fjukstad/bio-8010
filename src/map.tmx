@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="grass-tiles-2-small" tilewidth="32" tileheight="32">
+  <image source="../../../../../../Downloads/tileset/grass-tiles-2-small.png" width="384" height="192"/>
+ </tileset>
+ <tileset firstgid="73" name="qubodup-bush_berries_0" tilewidth="32" tileheight="32">
+  <image source="../../../../../../Downloads/tileset/qubodup-bush_berries_0.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="74" name="monsterboy_assets" tilewidth="32" tileheight="32">
+  <image source="../../../../../../Downloads/monsterboy_assets.png" width="1280" height="1456"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt18tKw0AUgOGxXjaCt01prVQFBa24LMX3fzDP4AyEEKOLabvI98FPk6zCHDrTpgQAAAAAwBScjHQVzUr5+i16jd7LPe39dx6P0Xl0ET1H6yO86xSMzSM3K58f0W10F31Gm2O87AT0138+8Owy2kUPpW25p7283jfRS6/rked1L6O9vLar6KnXffT1y/P6vaG9vK5n0SJapp/zuq77qnO9LJ0m89invK7bUj4n6gzq2Z2v12n4rKe97jxyQ3vXJpnHofR/R3X3rkWp7lHzTuaxH3/9/xgLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIDD+QYQEQpp
+  </data>
+ </layer>
+ <layer name="berries" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1aENACAMRcF2PPZfCAuEBEcr7pIvqp9oBAAAAAAA7HIZtfIy6ujx33jcegBwOn8FvekFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0NQH7SAE2
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object x="386.406" y="449.817" width="486.476" height="145.645"/>
+  <object x="373.526" y="581.591" width="67.3734" height="228.871"/>
+  <object x="437.927" y="647.974" width="100.069" height="186.268"/>
+  <object x="519.172" y="739.126" width="365.6" height="73.3181"/>
+  <object x="680.67" y="645.001" width="197.166" height="100.069"/>
+  <object x="779.748" y="585.554" width="100.069" height="95.1154"/>
+  <object x="580.6" y="581.591" width="54.4932" height="109.977"/>
+ </objectgroup>
+ <layer name="things" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T+1lC6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAbnEAAAQ==
+  </data>
+ </layer>
+</map>
