@@ -4,78 +4,7 @@
 
 <script> 
 
-window.onload = function(){
-    console.log("Hello") 
-
-    var h = 250
-        w = 500
-
-    var svg = d3.select("body").selectAll("svg"); 
-    
-    svg.attr("height", h)
-        .attr("width", w) 
-        .style("background-color", "#B00000") 
-    
-    var cr = 5,
-        startx = 65,
-        starty = 65;
-
-    var tilesize = 30;
-
-    var tiles = [
-                {x: 50, y:50},    
-                {x: 50, y:80},
-                {x: 50, y:110}, 
-                {x: 80, y:110},    
-                {x: 110, y:110}, 
-                {x: 110, y:140},  
-                ]
-
-    var tiles = svg.selectAll("rect")
-                .data(tiles)
-                .enter()
-                .append("rect")
-                .attr("height", tilesize)
-                .attr("width", tilesize)
-                .attr("x", function(d){
-                        return d.x;
-                })
-                .attr("y", function(d){
-                        return d.y;
-                })
-                .style("fill", "black") 
-                
-    var player = [{size: 5, x: startx, y: starty, oldx: 0, oldy: 0}]
-    
-    var c = svg.selectAll("circle")
-                .data(player)
-                .enter()
-                .append("circle") 
-                .attr("r", function(d){
-                     return d.size
-                     })
-                .attr("cx", startx)
-                .attr("cy", starty)
-                .style("fill", "steelblue");
-
-    var star = [{x: 125, y:155}];
-
-    var starr = 10;
-
-    var s = svg.selectAll("stars")
-                .data(star)
-                .enter()
-                .append("circle")
-                .attr("r", starr)
-                .attr("cx", function(d){
-                        return d.x;
-                        })
-                .attr("cy", function(d){
-                        return d.y;
-                        })
-                .style("fill", "green"); 
-
-    var movepx = tilesize
+    var svg, c, movepx, tiles, cr,starr,player,tilesize;  
 
     function moveLeft() {
         c.transition()
@@ -84,6 +13,7 @@ window.onload = function(){
                 d.x = d.oldx - movepx;
                 return d.x;
         })
+        checkPlayerPosition() 
     }
     function moveUp() {
         c.transition()
@@ -92,6 +22,7 @@ window.onload = function(){
                 d.y = d.oldy - movepx;
                 return d.y
         }); 
+        checkPlayerPosition() 
     }
 
     function moveRight() {
@@ -101,19 +32,22 @@ window.onload = function(){
                 d.x = d.oldx + movepx;
                 return d.x
         }); 
+        checkPlayerPosition() 
     }
     function moveDown() {
-    c.transition()
-        .attr("cy", function(d) {
-            d.oldy = d.y
-            d.y = d.oldy + movepx;
-            return d.y
-    });
+        c.transition()
+            .attr("cy", function(d) {
+                d.oldy = d.y
+                d.y = d.oldy + movepx;
+                return d.y
+        });
+    checkPlayerPosition() 
     }
+
 
     function outsideBoundaries(){
         var d = c[0][0].__data__
-        var len =tiles[0].length;
+        var len = tiles[0].length;
         for(var i = 0; i < len; i++){
             if(inside(tiles[0][i].__data__, d.x, d.y)){
                 return false
@@ -147,23 +81,9 @@ window.onload = function(){
         }
         return false
     }
-    
-    document.onkeydown = function(e) {
-        switch (e.keyCode) {
-            case 37:
-                moveLeft() 
-                break;
-            case 38:
-                moveUp() 
-                break;
-            case 39:
-                moveRight()
-                break;
-            case 40:
-                moveDown() 
-                break;
-        }
 
+
+ function checkPlayerPosition() {
 
         if(outsideBoundaries()){
             console.log("character outside");
@@ -206,26 +126,106 @@ window.onload = function(){
                         return d;
                 });
         }
+    }
 
+window.onload = function(){
+
+    console.log("Hello") 
+
+    var h = 250
+        w = 500
+
+    svg = d3.select("body").selectAll("svg"); 
+    
+    svg.attr("height", h)
+        .attr("width", w) 
+        .style("background-color", "#B00000") 
+    
+    cr = 5,
+        startx = 65,
+        starty = 65;
+
+    tilesize = 30;
+
+    tiles = [
+                {x: 50, y:50},    
+                {x: 50, y:80},
+                {x: 50, y:110}, 
+                {x: 80, y:110},    
+                {x: 110, y:110}, 
+                {x: 110, y:140},  
+                ]
+
+    tiles = svg.selectAll("rect")
+                .data(tiles)
+                .enter()
+                .append("rect")
+                .attr("height", tilesize)
+                .attr("width", tilesize)
+                .attr("x", function(d){
+                        return d.x;
+                })
+                .attr("y", function(d){
+                        return d.y;
+                })
+                .style("fill", "black") 
+                
+    player = [{size: 5, x: startx, y: starty, oldx: 0, oldy: 0}]
+    
+    c = svg.selectAll("circle")
+                .data(player)
+                .enter()
+                .append("circle") 
+                .attr("r", function(d){
+                     return d.size
+                     })
+                .attr("cx", startx)
+                .attr("cy", starty)
+                .style("fill", "steelblue");
+
+    star = [{x: 125, y:155}];
+
+    starr = 10;
+
+    var s = svg.selectAll("stars")
+                .data(star)
+                .enter()
+                .append("circle")
+                .attr("r", starr)
+                .attr("cx", function(d){
+                        return d.x;
+                        })
+                .attr("cy", function(d){
+                        return d.y;
+                        })
+                .style("fill", "green"); 
+
+    movepx = tilesize
+
+   
+    
+    document.onkeydown = function(e) {
+        switch (e.keyCode) {
+            case 37:
+                moveLeft() 
+                break;
+            case 38:
+                moveUp() 
+                break;
+            case 39:
+                moveRight()
+                break;
+            case 40:
+                moveDown() 
+                break;
+        }
     };                
-
-
 }
-
-
-
 </script>
-
-
 </head> 
 <body>
-
 <h1>bio-8010</h1> 
-
 <svg id="world">
-
 </svg> 
-
-
 </body> 
 </html> 
