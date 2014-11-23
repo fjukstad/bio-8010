@@ -23,3 +23,17 @@ In addition to the [abstract](doc/abstract/abstract.pdf) and [design
 document](doc/design-document/design-document.pdf) I wrote a small prototype
 that you'll find in the [src](/src) directory. 
 
+### How to run? 
+Clone down the repo and start up a HTTP server in the [src](/src) directory,
+e.g.: 
+
+``` 
+git clone git@github.com:fjukstad/bio-8010.git
+cd bio-8010/src
+python -m SimpleHTTPServer
+```
+
+Navigate to [localhost:8000](http://localhost:8000) in your desired web browser. 
+
+
+
