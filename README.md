@@ -5,7 +5,7 @@ for a game that should communicate your science in a new way.
 [Course website](http://en.uit.no/studies/courses/course?p_document_id=368206&ar=2014&semester=H)
 
 ## Code Lab
-Code Lab is a game where kids collaborate on escaping an underground dungedon by
+Code Lab is a game where kids collaborate on escaping an underground dungeon by
 programming their in-game characters to fight monsters, solve puzzles and
 collecting gems. The game is played in a collaborative environment such as the
 [Tromsø Display
