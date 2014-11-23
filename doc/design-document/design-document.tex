@@ -1,19 +1,26 @@
-\documentclass[11pt,journal,compsoc]{IEEEtran}
+\documentclass[12pt,journal,compsoc]{IEEEtran}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref} 
+\usepackage{fancyhdr}
+
+
 \begin{document}
+
 \title{Code Lab \\ Design Document}
+
 \author{Bjørn~Fjukstad \\ BIO-8010 Communicating Science Module 3\\ Visualizing
 your science} 
+
 \maketitle
 \vspace{-15mm}
+
 \section{Introduction} 
-Code Lab is a game where kids collaborate on navigating a character 
-through labyrinths, solving puzzles and fighting enemies. It runs in a shared
-environment where kids physically interact with the game by either writing
-real code or moving visual code blocks. Code lab consists of two types of 
-devices, one large display to run the game on, and one or more input devices for
-kids to interact with the game. 
+Code Lab is a game where kids collaborate on escaping an underground dungedon by
+programming their in-game characters to fight monsters, solve puzzles and
+collecting gems. The game is played in a collaborative environment such as the
+Tromsø Display Wall\cite{anshus2013nineyears}, where kids program on their own
+devices and run the game on the large display. This provides an interactive
+arena where kids can collaborate on completing the game together.
 
 Since the kids need to program the characters to perform different tasks, they
 will have to learn the basics of programming. The different levels will require
@@ -21,5 +28,7 @@ them to learn about \emph{variables}, \emph{functions} and \emph{control
 statements} such as \emph{for}-loops and \emph{if}-statements. 
 
 
-
+% Fetch your references, in a file called report.bib
+\bibliography{design-document}{}
+\bibliographystyle{plain}
 \end{document} 
