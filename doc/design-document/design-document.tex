@@ -3,13 +3,16 @@
 \usepackage{hyperref} 
 \usepackage{fancyhdr}
 
+\usepackage{graphicx}
+
+
 
 \begin{document}
 
-\title{Code Lab \\ Design Document}
+\title{Game Title \\ Design Document}
 
 \author{Bjørn~Fjukstad \\ BIO-8010 Communicating Science Module 3\\ Visualizing
-your science} 
+your science \\ \url{github.com/fjukstad/bio-8010}} 
 
 \maketitle
 \vspace{-15mm}
@@ -37,14 +40,69 @@ Scratch\cite{resnick2009scratch}. It is intended for kids that want to learn
 more about programming, specifically getting started with text-based
 programming. 
 
-
+CodeLab is open-sourced at \url{github.com/fjukstad/bio-8010}. 
 
 % Structure
 %\subsection{Concept, Goal and Learning Goals} 
 %\subsection{Target Audience} 
 
 \section{Description} 
+CodeLab takes place in a fictional dungeon, where each player is assigned a
+hero that he or she controls by programming their actions. The players equip
+their heroes with armor, weapons and other items that can help them complete the
+different levels. For each level, the players have to complete a set of tasks by
+programming their characters by using a programming language similar to the 
+Lua programming language\footnote{\url{lua.org}}. Players 
+write the code on their local machine, be it a laptop or a smart phone, and see
+their characters perform the actions on a large shared display. Alongside the
+game view, the players see each others code making it possible to help out
+eachother if they encounter any problems. 
+\begin{figure}[htb]
+    \begin{centering}
+    \includegraphics[width=0.4\textwidth]{./figures/codelab3.png}
+    \caption{A sketch of the first level of CodeLab. The goal of the level
+    is to write code that moves the character (the circle) down to the
+    yellow square. The player writes three commands, $moveDown$,
+    $moveRight$ and $moveDown$ to complete the level. } 
+    \label{fig:level1}
+    \end{centering} 
+\end{figure}
+
+
+\begin{figure}[htb]
+    \begin{centering}
+    \includegraphics[width=0.4\textwidth]{./figures/codelab2.png}
+    \caption{The CodeLab environment. Players collaborate to solve a level. Both
+    the graphical window where the game runs, as well as the source code is
+    shown on a large display. } 
+    \label{fig:environ}
+    \end{centering} 
+\end{figure}
+
+\begin{figure}[htb]
+    \begin{centering}
+    \includegraphics[width=0.4\textwidth]{./figures/codelab4.jpg}
+    \caption{A level that can be completed by writing a simple loop.} 
+    \label{fig:loop}
+    \end{centering} 
+\end{figure}
+
+\begin{figure}[htb]
+    \begin{centering}
+    \includegraphics[width=0.4\textwidth]{./figures/codelab5.jpg}
+    \caption{Two players trying to complete the first level. This view is shown
+    on the large display, where they can help each other write the necessary
+    code. } 
+    \label{fig:loop}
+    \end{centering} 
+\end{figure}
+
+
+
+
 \subsection{Game Narrative} 
+
+
 \subsection{Game Setting} 
 \subsection{Game Tasks} 
 
