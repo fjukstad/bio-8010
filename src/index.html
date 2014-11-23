@@ -1,9 +1,14 @@
 <html>
 <head>
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<!--<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>--> 
+<script src="/d3.js" charset="utf-8"></script>
 <script> 
 
     var svg, c, movepx, tiles, cr, s, starr, player, tilesize;  
+
+    function functions(){
+        console.log("\nmoveLeft()\nmoveRight()\nmoveDown()\nmoveUp()");
+    }
 
     function moveLeft() {
         c.transition()
@@ -72,7 +77,6 @@
     function onStar(){
         var d = c[0][0].__data__; 
         var s = star[0]
-        console.log(d.x, s.x, d.y, s.y) 
         if(d.x > s.x - starr && d.x < s.x + starr) {
             if(d.y > s.y - starr && d.y < s.y + starr){
                 return true
@@ -85,7 +89,6 @@
  function checkPlayerPosition() {
 
         if(outsideBoundaries()){
-            console.log("character outside");
             c.transition()
                 .style("fill", "red")
                 .attr("r", cr*5)
@@ -105,7 +108,6 @@
         }
 
         if(onStar()){
-            console.log("WOHO") 
             s.transition()
                 .attr("r", 0);
             c.transition()
