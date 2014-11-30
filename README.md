@@ -14,6 +14,8 @@ program on their own devices and run the game on the large display. This
 provides an interactive arena where kids can collaborate on completing the game
 together. 
 
+![image1](doc/design-document/figures/codelab-real1.jpg) 
+
 ## Abstract and Design Document
 There were two requirements, an abstract and a deisgn document. You'll find them
 both in the [doc](/doc) folder. 
